@@ -1,14 +1,15 @@
 import React from 'react';
 
 import './App.scss';
+import {Container} from "@material-ui/core";
+import Header from "./containers/header";
 
 function App() {
   return (
-    <div className="App">
-    <header> HEADER</header>
+      <Container className='App' maxWidth={false}>
+        <Header/>
     <main> Main</main>
-    <footer> footer</footer>
-    </div>
+    </Container>
   );
 }
 
