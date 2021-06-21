@@ -1,10 +1,9 @@
 import React from 'react';
 import {makeStyles, createStyles, Theme} from '@material-ui/core/styles';
-import {Button, Container} from "@material-ui/core";
+import { Container} from "@material-ui/core";
 import Header from "./containers/header";
-import Count from "./containers/count";
-
 import './App.scss';
+import StopWatch from "./containers/stopWatch/stopWatch";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -34,10 +33,7 @@ function App() {
         <Container className={classes.root} maxWidth={false}>
             <Header/>
             <main className={classes.main}>
-                <Count/>
-                <Button variant="contained" color="primary">
-                    Start
-                </Button>
+                <StopWatch/>
             </main>
         </Container>
     );
