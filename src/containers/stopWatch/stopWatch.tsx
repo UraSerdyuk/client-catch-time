@@ -1,12 +1,12 @@
-import React ,{useState}from "react";
+import React ,{useState,useEffect}from "react";
 import './StopWatch.scss'
 
 const StopWatch = () => {
     const [time, setTime] = useState<number>(0);
     const [timerOn, setTimerOn] = useState<boolean>(false);
 
-    React.useEffect(() => {
-        let interval: any = null;
+    useEffect(() => {
+        let interval:any = null;
 
         if (timerOn) {
             interval = setInterval(() => {
