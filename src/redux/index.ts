@@ -5,8 +5,11 @@ import userReducer from "./reducers/userReducer";
 import stopWatchReducer from "./reducers/stopWatchReducer";
 
 const rootReducer = combineReducers({
-user:userReducer,
+    user:userReducer,
     stopWatch:stopWatchReducer
 })
 
 export const store = createStore(rootReducer,composeWithDevTools(applyMiddleware(thunk)))
+
+
+export type RootState = ReturnType<typeof rootReducer>

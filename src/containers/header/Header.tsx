@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector,useDispatch } from 'react-redux'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -6,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+
+import {RootState} from "../../redux";
+import {logout} from "../../redux/reducers/userReducer";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -23,6 +27,8 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export function Header() {
     const classes = useStyles();
+    const dispatch = useDispatch();
+    const isAuth = useSelector((state:RootState) => state.user.isAuth);
 
     return (
         <div className={classes.root}>
@@ -34,7 +40,10 @@ export function Header() {
                     <Typography variant="h6" className={classes.title}>
                         Catch Time
                     </Typography>
-                    <Button color="inherit">Login</Button>
+
+                    {!isAuth && <Button color="inherit">Login</Button>}
+                    {!isAuth && <Button color="inherit">Registration</Button>}
+                    {isAuth && <Button color="inherit" onClick={()=>dispatch(logout())}>LogOut</Button>}
                 </Toolbar>
             </AppBar>
         </div>
