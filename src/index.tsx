@@ -1,4 +1,3 @@
-/*eslint-disable */
 import React from "react";
 import ReactDOM from "react-dom";
 // import {
@@ -9,10 +8,10 @@ import ReactDOM from "react-dom";
 // } from "react-router-dom";
 
 import "./index.css";
+import { Provider } from "react-redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./redux";
-import { Provider } from "react-redux";
 
 ReactDOM.render(
   <React.StrictMode>

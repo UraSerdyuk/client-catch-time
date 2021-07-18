@@ -1,5 +1,6 @@
 /*eslint-disable */
-// import React from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
 import Header from "./containers/header";
@@ -9,7 +10,7 @@ import "./App.scss";
 import StopWatch from "./containers/stopWatch/stopWatch";
 import SignIn from "./containers/singIn";
 import SignUp from "./containers/signUp";
-import { useSelector } from "react-redux";
+
 import { RootState } from "./redux";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -40,12 +41,12 @@ function App() {
   return (
     <Container className={classes.root} maxWidth={false}>
       <Header />
-      <main className={classes.main}>
-        {isAuth && <StopWatch />}
-        {!isAuth && <SignUp />}
-        {!isAuth && <SignIn />}
-      </main>
-    </Container>
+    <main className={classes.main}>
+          {isAuth && <StopWatch />}
+          {!isAuth && <SignUp />}
+          {!isAuth && <SignIn />}
+        </main>
+   </Container>
   );
 }
 
