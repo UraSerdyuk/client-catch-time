@@ -1,8 +1,10 @@
-/*eslint-disable */
+// /*eslint-disable */
 import React from "react";
 import { useSelector } from "react-redux";
+import {Switch, Route,Redirect} from 'react-router';
 import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
 import { Container } from "@material-ui/core";
+
 import Header from "./containers/header";
 
 import "./App.scss";
@@ -34,17 +36,30 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function App() {
+function App( props: any) {
   const classes = useStyles();
   const isAuth = useSelector((state: RootState) => state.user.isAuth);
 
   return (
     <Container className={classes.root} maxWidth={false}>
-      <Header />
-    <main className={classes.main}>
-          {isAuth && <StopWatch />}
-          {!isAuth && <SignUp />}
-          {!isAuth && <SignIn />}
+        <Header />
+        <main className={classes.main}>
+        <Switch>
+            {/* <Route path="/rules"> */}
+            {/*    {!isAuth && <Rules />} */}
+            {/* </Route> */}
+            <Route path="/login">
+                {!isAuth ? <SignIn /> : <Redirect to="/" />
+                }
+            </Route>
+            <Route path="/signup">
+                {!isAuth ? <SignUp /> : <Redirect to="/" />
+                }
+            </Route>
+            <Route path="/">
+                {isAuth? <StopWatch /> : <Redirect to="/login" />}
+            </Route>
+        </Switch>
         </main>
    </Container>
   );

@@ -1,6 +1,7 @@
 /*eslint-disable */
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link as ReactLink } from 'react-router-dom';
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -23,6 +24,16 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
+      body2: {
+          textTransform: 'uppercase',
+          fontSize:' 0.875rem',
+          letterSpacing: '0.02857em',
+          textDecoration: 'none',
+          color: 'white',
+          fontFamily: "Roboto, Helvetica, Arial, sansSerif",
+          fontWeight: 500,
+          marginLeft:'30px'
+      }
   })
 );
 
@@ -47,8 +58,16 @@ export function Header() {
             Catch Time
           </Typography>
 
-          {!isAuth && <Button color="inherit">Login</Button>}
-          {!isAuth && <Button color="inherit">Registration</Button>}
+          {!isAuth &&
+          <ReactLink to='/login' className={classes.body2}>
+              {"Login"}
+          </ReactLink>
+          }
+          {!isAuth &&
+          <ReactLink to='/signup' className={classes.body2}>
+              {"Registration"}
+          </ReactLink>
+          }
           {isAuth && (
             <Button color="inherit" onClick={() => dispatch(logout())}>
               LogOut

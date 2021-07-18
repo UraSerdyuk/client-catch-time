@@ -1,5 +1,6 @@
 /*eslint-disable */
 import React, { useState } from "react";
+import { Link as ReactLink } from 'react-router-dom';
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -46,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
+  body2: {
+    textDecoration: 'none'
+  }
 }));
 
 export const SignUp = () => {
@@ -133,6 +137,13 @@ export const SignUp = () => {
           </Button>
         </form>
       </div>
+      <Grid container>
+        <Grid item>
+          <ReactLink to='/login' className={classes.body2}>
+            {"Go to Sign In"}
+          </ReactLink>
+        </Grid>
+      </Grid>
       <Box mt={5}>
         <Copyright />
       </Box>
