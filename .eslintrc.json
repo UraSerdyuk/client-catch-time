@@ -4,9 +4,11 @@
         "es2021": true
     },
     "extends": [
+        "prettier",
         "plugin:react/recommended",
         "airbnb",
-        "eslint-config-prettier"
+        "eslint-config-prettier",
+        "react-app"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -22,8 +24,8 @@
         "eslint-plugin-prettier"
     ],
     "rules": {
+        "@typescript-eslint/no-use-before-define": "off",
         "no-unused-vars": "off",
-        "no-use-before-define": "off",
         "import/extensions": [
             "error",
             "ignorePackages",

@@ -1,4 +1,3 @@
-// @ts-ignore-start
 const defaultState = {
     stopWatch:{},
     isTimeOn:false
