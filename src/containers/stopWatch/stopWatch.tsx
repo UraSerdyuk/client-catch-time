@@ -1,12 +1,33 @@
 import React, {useState, useEffect} from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import "./StopWatch.scss";
-import {resetGame} from "../../redux/actions/game";
+import {decreaseLifeArction, resetGameAction, updateScoreAction} from "../../redux/actions/game";
+import useKeyPress from "../../hooks/useKeyPress";
+import {RootState} from "../../redux";
+
+
 
 const StopWatch = () => {
 	const [time, setTime] = useState<number>(0);
 	const [timerOn, setTimerOn] = useState<boolean>(false);
 	const dispatch = useDispatch();
+	const {live,score} = useSelector((state: RootState) => state.game);
+
+	const spacePress: boolean = useKeyPress(" ");
+
+	useEffect(()=>{
+
+		if(spacePress) {
+			console.log('spacePress',spacePress);
+			if(timerOn) {
+				setTimerOn(false)
+			}else {
+				setTimerOn(true)
+			}
+		}
+		// spacePress && timerOn ? handleStop() : setTimerOn(true) ;
+
+	},[spacePress]);
 
 	useEffect(() => {
 		let interval: any = null;
@@ -23,9 +44,16 @@ const StopWatch = () => {
 	}, [timerOn]);
 
 	const handleReset = () => {
-		dispatch(resetGame());
+		dispatch(resetGameAction());
+		dispatch(updateScoreAction(100));
 		 setTime(0);
 	}
+
+	const handleStop = () => {
+		live &&	dispatch(decreaseLifeArction());
+		 setTimerOn(false);
+	}
+
 	return (
 		<div className="Timers">
 			{/* <h2>Stopwatch</h2> */}
@@ -39,7 +67,7 @@ const StopWatch = () => {
 				{!timerOn && time === 0 && (
 					<button type="button" onClick={() => setTimerOn(true)}>Start</button>
 				)}
-				{timerOn && <button type="button" onClick={() => setTimerOn(false)}>Stop</button>}
+				{timerOn && <button type="button" onClick={handleStop}>Stop</button>}
 				{!timerOn && time > 0 && (
 					<button type="button" className='reset-button' onClick={handleReset}>Reset</button>
 				)}

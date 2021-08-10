@@ -25,7 +25,7 @@ const Navigation = () =>{
 	const classes = useStyles();
 	const {live,score} = useSelector((state: RootState) => state.game);
 
-	const arr =  (new Array(live)).fill(1).map((a,i)=>i)
+	const arr =   (new Array(live)).fill(1).map((a,i)=>i)
 
 
 	return 	<div className={classes.navigation}>
@@ -34,7 +34,7 @@ const Navigation = () =>{
 			{arr.map(()=> <FavoriteIcon/>)}
 		</div>
 		<div>
-			<span >Score</span>: 0
+			<span >Score</span>: {score}
 		</div>
 	</div>
 	</div>
