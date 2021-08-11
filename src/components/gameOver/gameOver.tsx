@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import {useSelector, useDispatch} from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 
 import {RootState} from "../../redux";
 import {resetGameAction} from "../../redux/actions/game";
+import useKeyPress from "../../hooks/useKeyPress";
+import {checkWinHelper} from "../../helpers/checkWin.helper";
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
@@ -32,6 +34,13 @@ export const GameOverPage = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const {live, score} = useSelector((state: RootState) => state.game);
+	const spacePress: boolean = useKeyPress(" ");
+	useEffect(()=>{
+		if(spacePress) {
+			dispatch(resetGameAction());
+		}
+	},[spacePress]);
+
 
 	const handleResetGame = () => {
 		dispatch(resetGameAction());

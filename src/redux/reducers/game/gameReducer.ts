@@ -2,7 +2,7 @@ import {RESET_GAME, DECREASE_LIFE, INCREASE_LIFE, UPDATE_SCORE} from "../../type
 
 
 const defaultState = {
-    live: 5,
+    live: 10,
     score: 0
 }
 
@@ -25,7 +25,7 @@ const defaultState = {
             }
         case RESET_GAME:
             return {
-                live : 5,
+                live : 10,
                 score: 0
             }
         default: return  state
