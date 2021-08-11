@@ -4,6 +4,7 @@ import "./StopWatch.scss";
 import {decreaseLifeArction, resetGameAction, updateScoreAction} from "../../redux/actions/game";
 import useKeyPress from "../../hooks/useKeyPress";
 import {RootState} from "../../redux";
+import {checkWinHelper} from "../../helpers/checkWin.helper";
 
 
 
@@ -14,19 +15,19 @@ const StopWatch = () => {
 	const {live,score} = useSelector((state: RootState) => state.game);
 
 	const spacePress: boolean = useKeyPress(" ");
+	const minutes = (`0${Math.floor((time / 1000) % 60)}`).slice(-2);
+	const seconds = (`0${(time / 10) % 100}`).slice(-2);
 
 	useEffect(()=>{
 
 		if(spacePress) {
-			console.log('spacePress',spacePress);
 			if(timerOn) {
+				checkWinHelper(seconds,dispatch);
 				setTimerOn(false)
 			}else {
 				setTimerOn(true)
 			}
 		}
-		// spacePress && timerOn ? handleStop() : setTimerOn(true) ;
-
 	},[spacePress]);
 
 	useEffect(() => {
@@ -45,22 +46,24 @@ const StopWatch = () => {
 
 	const handleReset = () => {
 		dispatch(resetGameAction());
-		dispatch(updateScoreAction(100));
+		dispatch(updateScoreAction(0));
 		 setTime(0);
 	}
 
 	const handleStop = () => {
-		live &&	dispatch(decreaseLifeArction());
+		checkWinHelper(seconds,dispatch);
 		 setTimerOn(false);
 	}
+
+
 
 	return (
 		<div className="Timers">
 			{/* <h2>Stopwatch</h2> */}
 			<div id="display">
 				<span>{(`0${Math.floor((time / 60000) % 60)}`).slice(-2)}:</span>
-				<span>{(`0${Math.floor((time / 1000) % 60)}`).slice(-2)}:</span>
-				<span>{(`0${(time / 10) % 100}`).slice(-2)}</span>
+				<span>{minutes}:</span>
+				<span>{seconds}</span>
 			</div>
 
 			<div id="buttons">

@@ -21,7 +21,7 @@ const defaultState = {
             case UPDATE_SCORE:
             return {
                 ...state,
-             score: action.payload
+             score: state.score + action.payload
             }
         case RESET_GAME:
             return {
