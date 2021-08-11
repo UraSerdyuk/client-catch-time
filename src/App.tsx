@@ -14,6 +14,7 @@ import SignUp from "./containers/signUp";
 import Navigation from './containers/navigation';
 
 import {RootState} from "./redux";
+import GameOverPage from "./components/gameOver";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
 		standart: {width: "100%",},
@@ -44,6 +45,7 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 function App(props: any) {
 	const classes = useStyles();
 	const isAuth = useSelector((state: RootState) => state.user.isAuth);
+	const {live,score} = useSelector((state: RootState) => state.game);
 
 	return (
 		<Container className={classes.root} maxWidth={false}>
@@ -65,8 +67,11 @@ function App(props: any) {
 					<Route path="/">
 						{isAuth ?
 							<div className={classes.standart}>
-								<Navigation/>
-								<StopWatch/>
+								{live ? <>
+									<Navigation/>
+									<StopWatch/>
+								</>: <GameOverPage/>}
+
 							</div>
 							: <Redirect to="/login"/>}
 					</Route>

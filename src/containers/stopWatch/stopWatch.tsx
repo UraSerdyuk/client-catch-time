@@ -15,6 +15,7 @@ const StopWatch = () => {
 	const {live,score} = useSelector((state: RootState) => state.game);
 
 	const spacePress: boolean = useKeyPress(" ");
+	const hours = (`0${Math.floor((time / 60000) % 60)}`).slice(-2);
 	const minutes = (`0${Math.floor((time / 1000) % 60)}`).slice(-2);
 	const seconds = (`0${(time / 10) % 100}`).slice(-2);
 
@@ -55,13 +56,11 @@ const StopWatch = () => {
 		 setTimerOn(false);
 	}
 
-
-
 	return (
 		<div className="Timers">
 			{/* <h2>Stopwatch</h2> */}
 			<div id="display">
-				<span>{(`0${Math.floor((time / 60000) % 60)}`).slice(-2)}:</span>
+				<span>{hours}:</span>
 				<span>{minutes}:</span>
 				<span>{seconds}</span>
 			</div>
