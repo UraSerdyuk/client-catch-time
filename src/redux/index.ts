@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 
 import userReducer from "./reducers/userReducer";
 import stopWatchReducer from "./reducers/stopWatchReducer";
-import gameReducer from './reducers/game';
+import gameReducer from './reducers/game/gameReducer';
 
 const rootReducer = combineReducers({
   user: userReducer,

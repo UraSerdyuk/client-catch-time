@@ -1,4 +1,4 @@
-import {decreaseLifeArction, updateScoreAction} from "../redux/actions/game";
+import {decreaseLifeArction, updateScoreAction} from "../redux/actions/game.action";
 
 export const checkWinHelper = (times: string, dispatch: any) => {
 	const secondsNumber = Number(times);

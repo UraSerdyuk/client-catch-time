@@ -4,13 +4,13 @@ import {useSelector, useDispatch} from "react-redux";
 import {makeStyles} from '@material-ui/core/styles';
 
 import {RootState} from "../../redux";
-import {resetGameAction} from "../../redux/actions/game";
+import {resetGameAction,saveScoreApi} from "../../redux/actions/game.action";
 import useKeyPress from "../../hooks/useKeyPress";
 import {checkWinHelper} from "../../helpers/checkWin.helper";
 
 const useStyles = makeStyles((theme) => ({
 	wrapper: {
-		width:'100%',
+		width: '100%',
 		height: '92vh',
 		display: 'flex',
 		justifyContent: 'center',
@@ -35,24 +35,25 @@ export const GameOverPage = () => {
 	const dispatch = useDispatch();
 	const {live, score} = useSelector((state: RootState) => state.game);
 	const spacePress: boolean = useKeyPress(" ");
-	useEffect(()=>{
-		if(spacePress) {
+	useEffect(() => {
+		if (spacePress) {
 			dispatch(resetGameAction());
 		}
-	},[spacePress]);
+	}, [spacePress]);
 
 
 	const handleResetGame = () => {
+		dispatch(saveScoreApi());
 		dispatch(resetGameAction());
 	}
 
 	return <div className={classes.wrapper}>
-			<div className={classes.root}>
-				<p>Game over</p>
-				<span>Your score: {score}</span>
-				<Button variant="contained" color="primary" className={classes.button} onClick={handleResetGame}>
-					Try Again
-				</Button>
-			</div>
+		<div className={classes.root}>
+			<p>Game over</p>
+			<span>Your score: {score}</span>
+			<Button variant="contained" color="primary" className={classes.button} onClick={handleResetGame}>
+				Save result and Try Again
+			</Button>
+		</div>
 	</div>
 };

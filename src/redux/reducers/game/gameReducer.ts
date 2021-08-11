@@ -1,9 +1,10 @@
-import {RESET_GAME, DECREASE_LIFE, INCREASE_LIFE, UPDATE_SCORE} from "../../types/game.typings";
+import {RESET_GAME, DECREASE_LIFE, INCREASE_LIFE, UPDATE_SCORE,UPDATE_BEST_SCORE} from "../../types/game.typings";
 
 
 const defaultState = {
     live: 10,
-    score: 0
+    score: 0,
+    bestScore:0
 }
 
  const game = (state= defaultState, action : any) => {
@@ -23,10 +24,16 @@ const defaultState = {
                 ...state,
              score: state.score + action.payload
             }
+        case UPDATE_BEST_SCORE:
+            return {
+                ...state,
+                bestScore: action.payload
+            }
         case RESET_GAME:
             return {
                 live : 10,
-                score: 0
+                score: 0,
+                bestScore:0
             }
         default: return  state
     }

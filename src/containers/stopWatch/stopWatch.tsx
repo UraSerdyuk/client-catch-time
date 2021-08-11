@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import "./StopWatch.scss";
-import {decreaseLifeArction, resetGameAction, updateScoreAction} from "../../redux/actions/game";
+import {decreaseLifeArction, resetGameAction, updateScoreAction} from "../../redux/actions/game.action";
 import useKeyPress from "../../hooks/useKeyPress";
 import {RootState} from "../../redux";
 import {checkWinHelper} from "../../helpers/checkWin.helper";
