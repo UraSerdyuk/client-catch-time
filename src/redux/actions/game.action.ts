@@ -1,5 +1,6 @@
 import axios from "axios";
 import {DECREASE_LIFE, INCREASE_LIFE, RESET_GAME, UPDATE_BEST_SCORE, UPDATE_SCORE} from "../types/game.typings";
+import {hostUrl} from "../../constants/api.constants";
 
 
 export const resetGameAction = () => ({
@@ -28,7 +29,7 @@ export const saveScoreApi = () => async (dispatch: any, store: any) => {
 		const user = store().user.currentUser
 		const {score} = store().game
 		 await axios.post(
-			"http://localhost:5000/api/game/set/result",
+		 	`${hostUrl}api/game/set/result`,
 			{'score': score, user}
 		);
 		dispatch(resetGameAction());
@@ -40,7 +41,7 @@ export const saveScoreApi = () => async (dispatch: any, store: any) => {
 export const getBestScoreApi = () => async (dispatch: any, store: any) => {
 	try {
 		const user = store().user.currentUser
-		const {data} = await axios.post("http://localhost:5000/api/game/score",{user});
+		const {data} = await axios.post(`${hostUrl}api/game/score`,{user});
 
 		dispatch(updateBestScoreAction(data.bestScore));
 	} catch (error) {
