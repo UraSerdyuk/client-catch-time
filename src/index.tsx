@@ -12,7 +12,8 @@ ReactDOM.render(
     <React.StrictMode>
         <Provider store={store}>
             <Router>
-                <App/>
+              qweqwe
+                {/*<App/>*/}
             </Router>
         </Provider>
     </React.StrictMode>,
