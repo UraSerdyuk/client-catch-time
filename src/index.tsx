@@ -13,7 +13,7 @@ ReactDOM.render(
         <Provider store={store}>
             <Router>
               123 werrwerw
-                {/*<App/>*/}
+                <App/>
             </Router>
         </Provider>
     </React.StrictMode>,
