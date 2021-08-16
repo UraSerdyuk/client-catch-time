@@ -1,7 +1,7 @@
 import axios from "axios";
 import { setUser } from "../reducers/userReducer";
 import {updateBestScoreAction, updateScoreAction} from "./game.action";
-import {hostUrl} from "../../constants/api.constants";
+import {developUrl, hostUrl} from "../../constants/api.constants";
 
 export const registration = async (email: string, password: string) => {
   try {
@@ -9,10 +9,10 @@ export const registration = async (email: string, password: string) => {
       { email, password }
     );
 
-    alert(response.data.message);
+    alert(response.data?.message);
     console.log("response", response);
   } catch (error) {
-    alert(error.response.data.message);
+    alert(error.response?.data?.message);
   }
 };
 
@@ -27,6 +27,6 @@ export const authorization = (email: string, password: string) => async (dispatc
       dispatch(updateBestScoreAction(response.data.user.score));
       localStorage.setItem("token", response.data.token);
     } catch (error) {
-      alert(error.response.data.message);
+      alert(error.response?.data?.message);
     }
   };
