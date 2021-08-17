@@ -60,9 +60,9 @@ const StopWatch = () => {
 		<div className="Timers">
 			{/* <h2>Stopwatch</h2> */}
 			<div id="display">
-				<span>{hours}:</span>
-				<span>{minutes}:</span>
-				<span>{seconds}</span>
+				<span className={"timer__hours"}>{hours}:</span>
+				<span className={"timer__minutes"}>{minutes}:</span>
+				<span className={"timer__seconds"}>{seconds}</span>
 			</div>
 
 			<div id="buttons">

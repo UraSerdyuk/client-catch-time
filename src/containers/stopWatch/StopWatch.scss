@@ -9,6 +9,14 @@
 
 #display {
   margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  > span {
+    display: inline-block;
+    width: 15%;
+  }
 }
 #display span {
   font-size: 150px;
