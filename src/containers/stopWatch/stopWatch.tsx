@@ -56,13 +56,17 @@ const StopWatch = () => {
 		 setTimerOn(false);
 	}
 
+	const separateParser = (number : string) => {
+	return	seconds.split('').map(num=><span>{num}</span>)
+	}
+
 	return (
 		<div className="Timers">
 			{/* <h2>Stopwatch</h2> */}
 			<div id="display">
 				<span className={"timer__hours"}>{hours}:</span>
 				<span className={"timer__minutes"}>{minutes}:</span>
-				<span className={"timer__seconds"}>{`${seconds}`.split('')}</span>
+				<span className={"timer__seconds"}>{separateParser(seconds)}</span>
 			</div>
 
 			<div id="buttons">
