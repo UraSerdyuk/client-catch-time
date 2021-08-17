@@ -17,6 +17,11 @@
     display: inline-block;
     width: 15%;
   }
+
+   .timer__seconds {
+     display: flex;
+     justify-content: space-evenly;
+   }
 }
 #display span {
   font-size: 150px;

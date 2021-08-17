@@ -62,7 +62,7 @@ const StopWatch = () => {
 			<div id="display">
 				<span className={"timer__hours"}>{hours}:</span>
 				<span className={"timer__minutes"}>{minutes}:</span>
-				<span className={"timer__seconds"}>{seconds}</span>
+				<span className={"timer__seconds"}>{`${seconds}`.split('')}</span>
 			</div>
 
 			<div id="buttons">
