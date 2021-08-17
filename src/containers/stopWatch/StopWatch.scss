@@ -20,7 +20,8 @@
 
    .timer__seconds {
      display: flex;
-     justify-content: space-evenly;
+     width: 11%;
+     justify-content: space-between;
    }
 }
 #display span {
