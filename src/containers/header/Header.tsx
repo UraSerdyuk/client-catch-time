@@ -55,7 +55,7 @@ export function Header() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Catch Time
+            Catch: 00
           </Typography>
 
           {!isAuth &&
