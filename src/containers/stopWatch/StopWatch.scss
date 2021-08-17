@@ -22,8 +22,14 @@
      display: flex;
      width: 12%;
      justify-content: space-between;
-     background-color: #094058;
    }
+
+  .timer__minutes {
+    display: flex;
+    width: 15%;
+    justify-content: space-between;
+  }
+
 }
 #display span {
   font-size: 150px;
