@@ -33,6 +33,11 @@
 }
 #display span {
   font-size: 150px;
+
+  @media ( max-width: 720px )  {
+    font-size: 35px;
+  }
+
 }
 #buttons button:nth-child(2) {
 }
