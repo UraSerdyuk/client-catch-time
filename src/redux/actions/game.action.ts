@@ -1,6 +1,6 @@
 import axios from "axios";
 import {DECREASE_LIFE, INCREASE_LIFE, RESET_GAME, UPDATE_BEST_SCORE, UPDATE_SCORE} from "../types/game.typings";
-import {hostUrl} from "../../constants/api.constants";
+import {developUrl, hostUrl} from "../../constants/api.constants";
 
 
 export const resetGameAction = () => ({

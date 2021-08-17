@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 			height: '100px',
 			display: 'flex',
 			justifyContent: 'space-between',
-			paddingRight: '50px'
 		},
 		informationMenu: {
 			display: 'flex',
@@ -23,7 +22,6 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 			display: 'flex',
 			justifyContent: 'center',
 			alignItems: 'center',
-			paddingLeft: '50px'
 		}
 	})
 	)

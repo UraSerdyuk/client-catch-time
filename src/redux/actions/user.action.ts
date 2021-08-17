@@ -30,3 +30,16 @@ export const authorization = (email: string, password: string) => async (dispatc
       alert(error.response?.data?.message);
     }
   };
+
+export const refreshToken = (token: string ) => async (dispatch: any, store: any) => {
+  try {
+    const {data} = await axios.post(`${hostUrl}api/auth/token/refresh`,{token});
+
+    dispatch(setUser(data.user));
+    dispatch(updateBestScoreAction(data.user.score));
+
+  } catch (error) {
+    console.log(error);
+    error.response?.data?.message &&  alert(error.response?.data?.message);
+  }
+}

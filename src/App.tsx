@@ -1,5 +1,5 @@
-import React from "react";
-import {useSelector} from "react-redux";
+import React,{useEffect} from "react";
+import {useSelector,useDispatch} from "react-redux";
 import {Switch, Route, Redirect} from 'react-router';
 import {makeStyles, createStyles, Theme} from "@material-ui/core/styles";
 import {Container} from "@material-ui/core";
@@ -15,6 +15,7 @@ import Navigation from './containers/navigation';
 
 import {RootState} from "./redux";
 import GameOverPage from "./components/gameOver";
+import {refreshToken} from "./redux/actions/user.action";
 
 const useStyles = makeStyles((theme: Theme) => createStyles({
 		standart: {width: "100%",},
@@ -44,8 +45,16 @@ const useStyles = makeStyles((theme: Theme) => createStyles({
 
 function App(props: any) {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const isAuth = useSelector((state: RootState) => state.user.isAuth);
-	const {live,score} = useSelector((state: RootState) => state.game);
+	const {live} = useSelector((state: RootState) => state.game);
+
+	useEffect(() => {
+		const token = localStorage.getItem('token');
+		if (token) {
+			dispatch(refreshToken(token));
+		}
+	}, [])
 
 	return (
 		<Container className={classes.root} maxWidth={false}>
